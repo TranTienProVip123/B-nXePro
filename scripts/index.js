@@ -1,3 +1,4 @@
+// --- Hero Slider ---
 let currentSlide = 0;
 const slides = document.querySelectorAll(".hero-slide");
 const totalSlides = slides.length;
@@ -31,192 +32,230 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  showSlide(0);
-  startAutoSlide();
-});
-// hero section background images
+// --- Data ---
 const heroSilder = ["img/banner1.jpg", "img/banner2.jpg", "img/banner3.jpg"];
-// Product Data
 const products = [
-  {
-    name: "TOYOTA RAIZE CROSS",
-    price: "1.850.000.000đ",
-    image: "xe1.jpg",
-  },
-  {
-    name: "TOYOTA YARIS CROSS",
-    price: "1.650.000.000đ",
-    image: "xe2.jpg",
-  },
-  {
-    name: "TOYOTA VELOZ CROSS",
-    price: "1.650.000.000đ",
-    image: "xe3.png",
-  },
-  {
-    name: "TOYOTA VIOS CROSS",
-    price: "1.650.000.000đ",
-    image: "xe4.png",
-  },
-  {
-    name: "TOYOTA YARIS CROSS",
-    price: "1.650.000.000đ",
-    image: "xe5.jpg",
-  },
-  {
-    name: "TOYOTA YARIS CROSS",
-    price: "1.650.000.000đ",
-    image: "xe6.png",
-  },
-  {
-    name: "TOYOTA LAND CRUISER",
-    price: "1.850.000.000đ",
-    image: "xe7.jpg",
-  },
-  {
-    name: "TOYOTA YARIS CROSS",
-    price: "1.650.000.000đ",
-    image: "xe8.jpg",
-  },
-  {
-    name: "TOYOTA VELOZ CROSS",
-    price: "1.650.000.000đ",
-    image: "xe9.jpg",
-  },
-  {
-    name: "TOYOTA ALPHARD CROSS",
-    price: "1.850.000.000đ",
-    image: "xe11.jpg",
-  },
+  { name: "TOYOTA RAIZE CROSS", price: "1.850.000.000đ", image: "xe1.jpg" },
+  { name: "TOYOTA YARIS CROSS", price: "1.650.000.000đ", image: "xe2.jpg" },
+  { name: "TOYOTA VELOZ CROSS", price: "1.650.000.000đ", image: "xe3.png" },
+  { name: "TOYOTA VIOS CROSS", price: "1.650.000.000đ", image: "xe4.png" },
+  { name: "TOYOTA YARIS CROSS", price: "1.650.000.000đ", image: "xe5.jpg" },
+  { name: "TOYOTA YARIS CROSS", price: "1.650.000.000đ", image: "xe6.png" },
+  { name: "TOYOTA LAND CRUISER", price: "1.850.000.000đ", image: "xe7.jpg" },
+  { name: "TOYOTA YARIS CROSS", price: "1.650.000.000đ", image: "xe8.jpg" },
+  { name: "TOYOTA VELOZ CROSS", price: "1.650.000.000đ", image: "xe9.jpg" },
+  { name: "TOYOTA ALPHARD CROSS", price: "1.850.000.000đ", image: "xe11.jpg" },
 ];
 
-// Generate Product Cards
+// --- Search Functionality ---
+function renderSearchResults(results) {
+  const searchResultsContainer = document.getElementById('search-results');
+  if (!searchResultsContainer) return;
+
+  searchResultsContainer.innerHTML = '';
+  if (results.length === 0) {
+    searchResultsContainer.innerHTML = '<p style="color: #888; text-align: center; padding: 20px 0;">Không tìm thấy kết quả nào.</p>';
+    return;
+  }
+
+  results.forEach(car => {
+    const item = `
+      <a href="#" class="result-item">
+        <img src="img/${car.image}" alt="${car.name}">
+        <span class="name">${car.name}</span>
+        <span class="price">${car.price}</span>
+      </a>
+    `;
+    searchResultsContainer.insertAdjacentHTML('beforeend', item);
+  });
+}
+
+function handleSearch(event) {
+  const query = event.target.value.toLowerCase().trim();
+  const searchResultsContainer = document.getElementById('search-results');
+  if (!searchResultsContainer) return;
+
+  if (!query) {
+    searchResultsContainer.innerHTML = '';
+    return;
+  }
+
+  const filteredCars = products.filter(car => {
+    const carName = car.name.toLowerCase();
+    // Chuẩn hóa giá để tìm kiếm (loại bỏ "đ" và ".")
+    const carPrice = car.price.replace(/[.đ]/g, '');
+    const normalizedQuery = query.replace(/[.đ]/g, '');
+    
+    return carName.includes(query) || carPrice.includes(normalizedQuery);
+  });
+
+  renderSearchResults(filteredCars);
+}
+
+
+// --- Page Generation and Interaction ---
 function generateProducts() {
   const grid = document.getElementById("productsGrid");
   const select = document.getElementById("carModel");
   const quoteCard = document.querySelector(".quote-card");
-  grid.innerHTML = ""; // Clear existing
-
-  select.innerHTML = '<option value=""> Xe muốn mua </option>'; // Clear existing
+  if (grid) grid.innerHTML = "";
+  if (select) select.innerHTML = '<option value=""> Xe muốn mua </option>';
 
   products.forEach((product, index) => {
-    const card = `
-                    <div class="product-card" onclick="showProductDetail(${index})">
-                        <div class="product-image">
-                            <img src="img/${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-price">${product.price}</p>
-                            <div class="product-actions">
-                                <button class="btn-quote" onclick="scrollToQuote(event, '${product.name}')">BÁO GIÁ LĂNG BÁNH</button>
-                                <button class="btn-detail" onclick="showProductDetail(${index})">XEM XE</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-    grid.insertAdjacentHTML("beforeend", card);
-
-    // Add to select
-    const option = document.createElement("option");
-    option.value = product.name;
-    option.textContent = product.name;
-    select.appendChild(option);
+    if (grid) {
+      const card = `
+        <div class="product-card" onclick="showProductDetail(${index})">
+          <div class="product-image"><img src="img/${product.image}" alt="${product.name}"></div>
+          <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-price">${product.price}</p>
+            <div class="product-actions">
+              <button class="btn-quote" onclick="scrollToQuote(event, '${product.name}')">BÁO GIÁ LĂN BÁNH</button>
+              <button class="btn-detail" onclick="showProductDetail(${index})">XEM XE</button>
+            </div>
+          </div>
+        </div>`;
+      grid.insertAdjacentHTML("beforeend", card);
+    }
+    if (select) {
+      const option = document.createElement("option");
+      option.value = product.name;
+      option.textContent = product.name;
+      select.appendChild(option);
+    }
   });
-  grid.appendChild(quoteCard); // Keep quote card at the end
+  if (grid && quoteCard) grid.appendChild(quoteCard);
 }
 
-// Generate Gallery
 function generateGallery() {
   const gallery = document.getElementById("galleryGrid");
+  if (!gallery) return;
   gallery.innerHTML = "";
-
-  // Danh sách ảnh khách hàng thực tế
   const customers = [
     { name: "Anh Nguyễn Văn Minh", image: "img/khach1.jpg" },
     { name: "Chị Trần Thị Hồng", image: "img/khach2.jpg" },
     { name: "Anh Lê Hoàng Nam", image: "img/khach3.jpg" },
     { name: "Gia đình Anh Phúc", image: "img/khach4.jpg" },
   ];
-
-  // Sinh thẻ gallery
-  customers.forEach((c, index) => {
+  customers.forEach(c => {
     const item = `
-        <div class="gallery-item">
-          <img src="${c.image}" alt="${c.name}">
-          <div class="gallery-overlay">
-            <p>${c.name}</p>
-          </div>
-        </div>
-      `;
+      <div class="gallery-item">
+        <img src="${c.image}" alt="${c.name}">
+        <div class="gallery-overlay"><p>${c.name}</p></div>
+      </div>`;
     gallery.insertAdjacentHTML("beforeend", item);
   });
 }
 
-// Show Product Detail Modal
 function showProductDetail(index) {
   const product = products[index];
   const modal = document.getElementById("productModal");
   const modalBody = document.getElementById("modalBody");
+  if (!modal || !modalBody) return;
 
   modalBody.innerHTML = `
-                <h2>${product.name}</h2>
-                <div style="text-align: center; margin: 30px 0;">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%23f5f5f5' width='600' height='400'/%3E%3Cpath fill='%23666' d='M100 180h400v120H100z'/%3E%3Ccircle fill='%23333' cx='220' cy='300' r='40'/%3E%3Ccircle fill='%23333' cx='380' cy='300' r='40'/%3E%3Cpath fill='%23888' d='M150 120h300l-30 60H180z'/%3E%3C/svg%3E" style="max-width: 100%; height: auto;">
-                </div>
-                <p style="font-size: 24px; color: #eb0a1e; font-weight: 600; margin: 20px 0;">Giá: ${product.price}</p>
-                <h3>Thông số kỹ thuật:</h3>
-                <ul style="line-height: 2; margin: 20px 0;">
-                    <li>Động cơ: 2.0L VVT-i</li>
-                    <li>Công suất: 143 mã lực</li>
-                    <li>Hộp số: Tự động CVT</li>
-                    <li>Nhiên liệu: Xăng</li>
-                    <li>Dẫn động: 2 cầu (AWD)</li>
-                </ul>
-                <button class="submit-btn" onclick="scrollToQuote(event, '${product.name}'); closeModal();">ĐĂNG KÝ LÁI THỬ</button>
-            `;
-
+    <h2>${product.name}</h2>
+    <div style="text-align: center; margin: 30px 0;"><img src="img/${product.image}" alt="${product.name}"></div>
+    <p style="font-size: 24px; color: #eb0a1e; font-weight: 600; margin: 20px 0;">Giá: ${product.price}</p>
+    <h3>Thông số kỹ thuật:</h3>
+    <ul style="line-height: 2; margin: 20px 0;">
+      <li>Động cơ: 2.0L VVT-i</li> <li>Công suất: 143 mã lực</li> <li>Hộp số: Tự động CVT</li>
+      <li>Nhiên liệu: Xăng</li> <li>Dẫn động: 2 cầu (AWD)</li>
+    </ul>
+    <button class="submit-btn" onclick="scrollToQuote(event, '${product.name}'); closeModal();">ĐĂNG KÝ LÁI THỬ</button>`;
   modal.classList.add("active");
 }
 
-// Close Modal
 function closeModal() {
-  document.getElementById("productModal").classList.remove("active");
+  const modal = document.getElementById("productModal");
+  if (modal) modal.classList.remove("active");
 }
 
-// Toggle Mobile Menu
 function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("active");
+  const navMenu = document.getElementById("navMenu");
+  const overlay = document.getElementById("sidebarOverlay");
+  if (!navMenu || !overlay) return;
+  navMenu.classList.toggle("active");
+  overlay.classList.toggle("active");
+  document.body.style.overflow = navMenu.classList.contains("active") ? "hidden" : "";
 }
 
-// Scroll to Quote Section
+function closeMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const overlay = document.getElementById("sidebarOverlay");
+  if (navMenu && overlay) {
+    navMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+  document.body.style.overflow = "";
+}
+
 function scrollToQuote(event, carName) {
   event.stopPropagation();
-  document.getElementById("carModel").value = carName;
-  document.getElementById("quote").scrollIntoView({ behavior: "smooth" });
+  const carModelSelect = document.getElementById("carModel");
+  const quoteSection = document.getElementById("quote");
+  if (carModelSelect) carModelSelect.value = carName;
+  if (quoteSection) quoteSection.scrollIntoView({ behavior: "smooth" });
 }
 
-// Handle Form Submit
-document.getElementById("quoteForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+// --- DOMContentLoaded: Main Event Listener ---
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize slider
+  if (slides.length > 0) {
+    showSlide(0);
+    startAutoSlide();
+  }
 
-  const formData = {
-    purpose: document.querySelector('input[name="purpose"]:checked').value,
-    carModel: document.getElementById("carModel").value,
-    fullName: document.getElementById("fullName").value,
-    location: document.getElementById("location").value,
-  };
-  console.log("Form Data Submitted:", formData);
-  // Show success message
-  const successMessage = document.getElementById("successMessage");
-  successMessage.classList.add("show");
-  setTimeout(() => {
-    successMessage.classList.remove("show");
-  }, 3000);
-  // Reset form
-  this.reset();
+  // Initialize page content
+  generateProducts();
+  generateGallery();
+
+  // Mobile menu listeners
+  const overlay = document.getElementById("sidebarOverlay");
+  if (overlay) overlay.addEventListener("click", closeMenu);
+  const navMenu = document.getElementById("navMenu");
+  if (navMenu) {
+    navMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setTimeout(closeMenu, 100)));
+  }
+
+  // Form submission listener
+  const quoteForm = document.getElementById("quoteForm");
+  if (quoteForm) {
+    quoteForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const successMessage = document.getElementById("successMessage");
+      if (successMessage) {
+        successMessage.classList.add("show");
+        setTimeout(() => successMessage.classList.remove("show"), 3000);
+      }
+      this.reset();
+    });
+  }
+  
+  // --- Search Event Listeners ---
+  const openSearchBtn = document.querySelector('.fa-search');
+  const searchOverlay = document.getElementById('search-overlay');
+  const closeSearchBtn = document.getElementById('close-search-btn');
+  const searchInput = document.getElementById('search-input');
+
+  if (openSearchBtn && searchOverlay) {
+    openSearchBtn.addEventListener('click', () => {
+      searchOverlay.classList.add('active');
+      if (searchInput) searchInput.focus();
+    });
+  }
+
+  if (closeSearchBtn && searchOverlay) {
+    closeSearchBtn.addEventListener('click', () => searchOverlay.classList.remove('active'));
+  }
+  
+  if (searchOverlay) {
+    searchOverlay.addEventListener('click', (event) => {
+      if (event.target === searchOverlay) searchOverlay.classList.remove('active');
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+  }
 });
-// Initialize
-generateProducts();
-generateGallery();

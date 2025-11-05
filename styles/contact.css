@@ -1,0 +1,105 @@
+/* ============================ */
+/*    Contact Hero Banner CSS   */
+/* ============================ */
+
+.contact-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* hoặc 'flex-start' để căn trái */
+  min-height: 450px; /* Chiều cao banner, tùy chỉnh theo ý bạn */
+  padding: 40px 20px;
+  color: #fff;
+  overflow: hidden;
+  text-align: center; /* hoặc 'left' để căn trái */
+}
+
+/* Lớp chứa ảnh nền */
+.contact-banner .banner-background {
+  position: absolute;
+  inset: 0; /* top/right/bottom/left = 0 */
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05); /* Hiệu ứng zoom nhẹ */
+  z-index: 1;
+}
+
+/* Lớp phủ tối */
+.contact-banner .banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* Điều chỉnh độ tối của lớp phủ */
+  z-index: 2;
+}
+
+/* Nội dung banner (chữ, nút) */
+.contact-banner .banner-content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+}
+
+.contact-banner .banner-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+}
+
+.contact-banner .banner-address {
+  font-style: normal;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 500px; /* Giới hạn chiều rộng của địa chỉ */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Nút Call-to-Action */
+.contact-banner .banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #e60012; /* Màu đỏ đặc trưng của Toyota */
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 0, 18, 0.3);
+}
+
+.contact-banner .banner-cta:hover {
+  background-color: #c90010;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 0, 18, 0.4);
+}
+
+.contact-banner .banner-cta i {
+  font-size: 1.1rem;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .contact-banner {
+    min-height: 380px;
+    text-align: center; /* Căn giữa trên mobile */
+  }
+
+  .contact-banner .banner-content {
+    padding: 0 10px;
+  }
+
+  .contact-banner .banner-address {
+    font-size: 1rem;
+  }
+
+  .contact-banner .banner-cta {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+  }
+}

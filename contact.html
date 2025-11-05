@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toyota Thủ Đức - Vững Vàng Vị Thế</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/contact.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="contact-info">
+          <span>
+            <i class="fas fa-map-marker-alt"></i>
+            Showroom: 134 Nguyễn Văn Tăng, Quận Thủ Đức, TP. Hồ Chí Minh
+          </span>
+        </div>
+        <div class="contact-phone">
+          <span>
+            <i class="fas fa-phone-alt"></i>
+            Trải nghiệm khách hàng: <strong>9999 999 999</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <nav>
+        <i class="mobile-menu-btn fas fa-bars" onclick="toggleMenu()"></i>
+        <div class="logo">
+          <img src="img/logo.png" alt="Toyota Thủ Đức" />
+        </div>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">TRANG CHỦ</a></li>
+          <li><a href="#products">SẢN PHẨM</a></li>
+          <li><a href="#quote">DỊCH VỤ</a></li>
+          <li><a href="news-event.html">TIN TỨC & SỰ KIỆN</a></li>
+          <li><a href="contact.html">LIÊN HỆ</a></li>
+        </ul>
+        <div class="nav-icons">
+          <i class="fas fa-search"></i>
+          <button class="language-btn">VIE</button>
+          <i class="fas fa-user"></i>
+        </div>
+      </nav>
+    </header>
+
+    <section class="contact-banner">
+        <!-- Thay 'img/contact-banner-bg.jpg' bằng đường dẫn ảnh banner của bạn -->
+        <div class="banner-background" style="background-image: url('img/news/banner2.jpg');"></div>
+        <div class="banner-overlay"></div>
+
+        <div class="banner-content">
+            <h1 class="banner-title">TOYOTA BÌNH THẠNH</h1>
+            <address class="banner-address">
+            Showroom 1: 507 Võ Nguyên Giáp, TP HCM.<br>
+            Showroom 2: 650 QL 13, Phường Hiệp Bình, TP HCM.<br>
+            Showroom 3: 18 Phan Văn Trị, Phường Hạnh Thông, TP HCM.
+            </address>
+            <a href="tel:0705043633" class="banner-cta">
+            <!-- Giả sử bạn đang dùng Font Awesome -->
+            <i class="fas fa-phone-alt"></i>
+            <span>9999999999</span>
+            </a>
+        </div>
+        </section>
+
+    <!-- Customer Gallery -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <h2 class="section-title">CÁC KHÁCH HÀNG ĐÃ MUA XE</h2>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Toyota Bình Thạnh</h3>
+          <p>Quy tín là uy tín được xưng tụng Việt Nam</p>
+          <p>
+            <strong>Showroom 1:</strong> 134 Nguyễn Văn Tăng, Quận Thủ Đức, TP
+            HCM
+          </p>
+          <p>
+            <strong>Showroom 2:</strong> 12 Đường 22A, P. Bình Trị Đông B, Quận
+            Bình Tân, TP HCM
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Hỗ trợ khách hàng</h3>
+          <p><strong>Hotline:</strong> 999999999</p>
+          <p><strong>Email:</strong> toyota.thuduc@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Toyota Thủ Đức. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+      <i class="fas fa-check-circle"></i> Gửi thông tin thành công! Chúng tôi sẽ
+      liên hệ với bạn sớm.
+    </div>
+    <script src="scripts/contact.js"></script>
+  </body>
+</html>

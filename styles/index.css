@@ -90,6 +90,136 @@ nav {
   font-weight: 600;
 }
 
+/*        Search Overlay CSS    */
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Căn trên cùng */
+  padding-top: 10vh; /* Khoảng cách từ trên xuống */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.close-btn:hover {
+  color: #fff;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #555;
+  padding-bottom: 10px;
+}
+
+.search-bar .search-icon {
+  color: #999;
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+#search-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+#search-input::placeholder {
+  color: #777;
+}
+
+.search-results {
+  margin-top: 15px;
+  max-height: 50vh; /* Giới hạn chiều cao */
+  overflow-y: auto;
+}
+
+/* Tùy chỉnh thanh cuộn */
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+.search-results::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.search-results::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 5px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  color: #eee;
+}
+
+.result-item:hover {
+  background-color: #3f3f3f;
+}
+
+.result-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  background-color: #444;
+  border: 1px solid #555;
+}
+
+.result-item .name {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.result-item .price {
+  margin-left: auto;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -105,25 +235,26 @@ nav {
   height: 100%;
 }
 
+.hero-slide picture,
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .hero-slide.active {
   opacity: 1;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-btn {
@@ -329,7 +460,6 @@ nav {
   background: #e0e0e0;
 }
 
-
 /* --- FORM CARD TRONG PRODUCTS-GRID --- */
 .quote-card {
   background: white;
@@ -362,7 +492,7 @@ nav {
   transition: border-color 0.3s ease;
 }
 
-.submit-btn{
+.submit-btn {
   background: #eb0a1e;
   color: #fff;
   font-weight: bold;
@@ -378,19 +508,19 @@ nav {
   padding: 60px 0;
   background-color: #fafafa;
   text-align: center;
+  margin-top: -50px;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+  gap: 10px;
+  margin: 0px 20px;
 }
 
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -409,7 +539,6 @@ nav {
 .gallery-overlay {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
@@ -517,24 +646,47 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* siderbar (ul.nav-menu)*/
   .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Ẩn sang trái */
+    width: 250px;
+    height: 100%;
+    background-color: white;
     flex-direction: column;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    padding: 60px 20px;
+    gap: 15px;
+    transition: left 0.3s ease;
+    z-index: 2000;
   }
 
   .nav-menu.active {
-    display: flex;
+    left: 0; /* Trượt ra */
   }
 
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-menu li a {
+    color: black;
+    font-size: 18px;
+    display: block;
+    text-decoration: none;
+  }
+  /* Mobile hamburger btn visible */
   .mobile-menu-btn {
     display: block;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    z-index: 2500;
+  }
+
+  .nav-icons {
+    display: none; /* Ẩn icon khi mở sidebar nếu muốn */
   }
 
   .hero-text h1 {
@@ -547,6 +699,31 @@ footer {
 
   .products-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-slide {
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .hero-btn {
+    font-size: 1.5rem;
+    padding: 6px;
+  }
+
+  .warranty-badge {
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 18px;
+  }
+}
+
+/* Trên desktop vẫn hiển thị bình thường */
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none;
   }
 }
 
@@ -578,4 +755,128 @@ footer {
 
 .success-message.show {
   display: block;
+}
+
+/* --- RESPONSIVE: iPhone 16 Pro Max (và các màn nhỏ hơn) --- */
+@media (max-width: 480px) {
+  /* Ẩn top bar để gọn hơn */
+  .top-bar {
+    display: none;
+  }
+
+  /* Giảm padding trong nav */
+  nav {
+    position: relative;
+    padding: 17px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Hiện nút mobile menu */
+  .mobile-menu-btn {
+    display: block;
+    font-size: 28px;
+    color: #333;
+    margin-left: 4px;
+    z-index: 2500;
+    background: transparent;
+    border: none;
+  }
+
+  /* center logo */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .logo img {
+    height: 50px;
+    margin: 0;
+  }
+
+  /* Co icon lại */
+  .nav-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 4px;
+    z-index: 2500;
+  }
+
+  .nav-icons i,
+  .nav-icons .language-btn {
+    pointer-events: auto;
+  }
+
+  .nav-menu {
+    left: -250px; /* keep same behavior from <=768 rule */
+  }
+
+  /* If you want overlay when sidebar open */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1990;
+    transition: opacity 0.25s ease;
+    opacity: 0;
+  }
+  .sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .hero {
+    height: 480px; /* cố định chiều cao phù hợp với ảnh mobile 480x480 */
+  }
+
+  .hero-slide picture,
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* hiển thị trọn ảnh vuông */
+  }
+
+  /* Nếu muốn banner chiếm toàn màn hình app (gần full viewport): */
+  /* .hero { height: 100vh; } */
+
+  /* Badge căn chỉnh lại để không che ảnh */
+  .warranty-badge {
+    bottom: 15px;
+    right: 15px;
+    transform: scale(0.85);
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr; /* 1 card trên 1 hàng */
+    gap: 15px;
+    padding: 0 15px;
+    margin-top: -50px;
+  }
+
+  .product-card {
+    width: 450px; /* phù hợp iPhone 16 Pro Max */
+    height: 430px; /* chiều cao toàn card */
+    margin-left: -20px;
+  }
+
+  .product-image {
+    height: 315px; /* chiều cao vùng ảnh */
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* để ảnh đầy card */
+  }
+
+  .btn-quote,
+  .btn-detail {
+    padding: 8px 50px;
+  }
 }

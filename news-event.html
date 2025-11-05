@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tini Company — Tin tức & Khách hàng</title>
+    <meta
+      name="description"
+      content="Trang tin tức và hình ảnh khách hàng mua xe — bố cục dựa theo thiết kế Figma"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/news-event.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="contact-info">
+          <span>
+            <i class="fas fa-map-marker-alt"></i>
+            Showroom: 134 Nguyễn Văn Tăng, Quận Thủ Đức, TP. Hồ Chí Minh
+          </span>
+        </div>
+        <div class="contact-phone">
+          <span>
+            <i class="fas fa-phone-alt"></i>
+            Trải nghiệm khách hàng: <strong>9999 999 999</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <nav>
+        <i class="mobile-menu-btn fas fa-bars" onclick="toggleMenu()"></i>
+        <div class="logo">
+          <img src="img/logo.png" alt="Toyota Thủ Đức" href="index.html" />
+        </div>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">TRANG CHỦ</a></li>
+          <li><a href="#products">SẢN PHẨM</a></li>
+          <li><a href="#quote">DỊCH VỤ</a></li>
+          <li><a href="#gallery">TIN TỨC & SỰ KIỆN</a></li>
+          <li><a href="contact.html">LIÊN HỆ</a></li>
+        </ul>
+        <div class="nav-icons">
+          <i class="fas fa-search"></i>
+          <button class="language-btn">VIE</button>
+          <i class="fas fa-user"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="content">
+        <section class="articles">
+          <!-- Article list -->
+          <article class="post">
+            <div class="thumb">
+              <img src="img/news/raize.jpg" alt="Toyota Raize" loading="lazy" />
+            </div>
+            <div class="post-body">
+              <h2 class="post-title">Toyota Raize hoàn toàn mới</h2>
+              <p class="post-excerpt">
+                Toyota Raize hoàn toàn mới — mẫu SUV đô thị cỡ nhỏ đầu tiên
+                trong dải sản phẩm của Toyota sẽ sớm được giới thiệu tại thị
+                trường Việt Nam.
+              </p>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="thumb">
+              <img
+                src="img/news/phu-kien-600x338.jpg"
+                alt="Dịch vụ bảo dưỡng"
+                loading="lazy"
+              />
+            </div>
+            <div class="post-body">
+              <h2 class="post-title">Toyota Raize hoàn toàn mới</h2>
+              <p class="post-excerpt">
+                Toyota Raize hoàn toàn mới — mẫu SUV đô thị cỡ nhỏ.
+                Toyota Raize hoàn toàn mới – mẫu SUV đô thị cỡ nhỏ đầu tiên
+                trong dải sản phẩm của Toyota sẽ sớm được giới thiệu tại thị
+                trường Việt Nam...
+              </p>
+                
+              </p>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="thumb">
+              <img
+                src="img/news/dich-vu-sua-chua-00-600x338.jpg"
+                alt="Hình ảnh dịch vụ"
+                loading="lazy"
+              />
+            </div>
+            <div class="post-body">
+              <h2 class="post-title">Toyota Raize hoàn toàn mới</h2>
+              <p class="post-excerpt">
+                Toyota Raize hoàn toàn mới – mẫu SUV đô thị cỡ nhỏ đầu tiên
+                trong dải sản phẩm của Toyota sẽ sớm được giới thiệu tại thị
+                trường Việt Nam. Tại Nhật Bản, Toyota Raize đã được đón nhận
+                nồng nhiệt và nhanh chóng trở thành mẫu SUV bán chạy hàng đầu...
+              </p>
+            </div>
+          </article>
+
+          <article class="post small">
+            <div class="thumb">
+              <img
+                src="img/news/dich-vu-bao-duong-0-600x341.jpg"
+                alt="Quảng cáo"
+                loading="lazy"
+              />
+            </div>
+            <div class="post-body">
+              <h2 class="post-title">Ưu đãi & Dịch vụ</h2>
+              <p class="post-excerpt">
+                Toyota Raize hoàn toàn mới – mẫu SUV đô thị cỡ nhỏ đầu tiên
+                trong dải sản phẩm của Toyota sẽ sớm được giới thiệu tại thị
+                trường Việt Nam. Tại Nhật Bản, Toyota Raize đã được đón nhận
+                nồng nhiệt và nhanh chóng trở thành mẫu SUV bán chạy hàng đầu.
+                Trong nửa đầu năm 2020, Raize có doanh số cao nhất tại thị
+                trường Nhật Bản...
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <aside class="sidebar" aria-label="Thanh bên">
+          <div class="searchbox" id="searchBox" hidden>
+            <label for="searchInput">Tìm kiếm...</label>
+            <input id="searchInput" type="search" placeholder="Tìm kiếm..." />
+          </div>
+
+          <div class="related">
+            <h3>TIN LIÊN QUAN</h3>
+            <ul>
+              <li><a href="#">Toyota camry hoàn toàn mới</a></li>
+              <li><a href="#">Giới thiệu Toyota Raize</a></li>
+              <li><a href="#">Phụ kiện Toyota Việt Nam</a></li>
+              <li><a href="#">Dịch vụ sửa chữa</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <h2 class="section-title">CÁC KHÁCH HÀNG ĐÃ MUA XE</h2>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Toyota Bình Thạnh</h3>
+          <p>Quy tín là uy tín được xưng tụng Việt Nam</p>
+          <p>
+            <strong>Showroom 1:</strong> 134 Nguyễn Văn Tăng, Quận Thủ Đức, TP
+            HCM
+          </p>
+          <p>
+            <strong>Showroom 2:</strong> 12 Đường 22A, P. Bình Trị Đông B, Quận
+            Bình Tân, TP HCM
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Hỗ trợ khách hàng</h3>
+          <p><strong>Hotline:</strong> 999999999</p>
+          <p><strong>Email:</strong> toyota.thuduc@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Toyota Thủ Đức. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts/news-event.js"></script>
+  </body>
+</html>

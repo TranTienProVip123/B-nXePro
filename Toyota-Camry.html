@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Camry - Toyota VLU</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Ẩn thanh cuộn cho slider */
+        #main-image-slider::-webkit-scrollbar,
+        #thumbnail-slider::-webkit-scrollbar {
+            display: none;
+        }
+        #main-image-slider,
+        #thumbnail-slider {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900">
+
+    <!-- === HEADER === -->
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+        
+        <!-- Top Bar (Address/Phone) - Ẩn trên mobile, hiện trên desktop -->
+        <div class="w-full py-2 px-6 border-b border-gray-200 hidden lg:flex justify-between items-center text-xs text-gray-600">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-1">
+                    <i class="fas fa-location-dot"></i>
+                    <span>69/68 Đặng Thùy Trâm, Phường 13, Quận Bình Thạnh, TP.HCM.</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-1">
+                    <span>Trải nghiệm khách hàng</span>
+                </div>
+                <!-- Đường kẻ dọc -->
+                <div class="border-l h-4 border-gray-300"></div>
+                <div class="flex items-center space-x-1">
+                    <i class="fas fa-phone-volume"></i>
+                    <span>09876543210</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="w-full py-4 px-6 border-b-2 border-red-600">
+            <div class="container mx-auto flex justify-between items-center">
+                
+                <!-- Logo Desktop - Luôn hiện logo -->
+                <a href="#" class="items-center space-x-2 hidden lg:flex">
+                    <img src="img\logo\logo-toyota.jpg" alt="Toyota Logo" class="h-10">
+                </a>
+
+                <!-- === HEADER MOBILE  === -->
+                <div class="lg:hidden flex justify-between items-center w-full">
+                    <!-- Nút Menu (Hamburger) -->
+                    <button id="mobile-menu-btn" class="flex items-center space-x-2 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                        <span class="font-semibold text-sm">MENU</span>
+                    </button>
+                    <!-- Logo TOYOTA (Mobile) -->
+                    <a href="#">
+                        <span class="text-2xl font-bold text-red-600 tracking-wider">TOYOTA</span>
+                    </a>
+                    <!-- Icon Search (Mobile) -->
+                    <button class="p-2">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- === NAVIGATION LINKS & ICONS (DESKTOP) === -->
+                <!-- Ẩn trên mobile, hiện trên desktop -->
+                <div class="hidden lg:flex items-center space-x-6 pl-12">
+                    <!-- Links -->
+                    <div class="flex items-center space-x-6 text-sm font-semibold uppercase">
+                        <a href="#" class="hover:text-red-600">Trang Chủ</a>
+                        <a href="#" class="hover:text-red-600">Sản Phẩm</a>
+                        <a href="#" class="hover:text-red-600">Dịch Vụ</a>
+                        <a href="#" class="hover:text-red-600">Video Blog</a>
+                        <a href="#" class="hover:text-red-600">Tin Tức & Sự Kiện</a>
+                        <a href="#" class="hover:text-red-600">Liên Hệ</a>
+                    </div>
+                    
+                    <!-- Icons (Desktop) -->
+                    <div class="flex items-center space-x-3 text-gray-500">
+                        <button class="hover:text-red-600 p-1">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                        <span class="border-l h-5 border-gray-300"></span>
+                        <a href="#" class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fas fa-envelope fa-fw text-sm"></i>
+                        </a>
+                        <a href="#" class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fas fa-phone fa-fw text-sm"></i>
+                        </a>
+                        <a href="#" class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fab fa-youtube fa-fw text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- === MOBILE MENU PANEL (DROPDOWN) === -->
+        <div id="mobile-menu" class="hidden lg:hidden w-full absolute top-full left-0 bg-white shadow-lg z-40 border-t border-gray-200">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Trang Chủ</a>
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Sản Phẩm</a>
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Dịch Vụ</a>
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Video Blog</a>
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Tin Tức & Sự Kiện</a>
+                <a href="#" class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded">Liên Hệ</a>
+                
+                <div class="border-t my-3"></div>
+
+                <div class="flex space-x-4 p-2">
+                    <a href="#" class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                        <i class="fas fa-envelope fa-fw"></i>
+                    </a>
+                    <a href="#" class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                        <i class="fas fa-phone fa-fw"></i>
+                    </a>
+                    <a href="#" class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600">
+                        <i class="fab fa-youtube fa-fw"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- === BREADCRUMBS === -->
+    <div class="w-full border-b border-gray-200">
+        <!-- Breadcrumbs Desktop -->
+        <div class="container mx-auto px-6 py-4 hidden lg:block">
+            <span class="text-base font-semibold text-gray-700">TRANG CHỦ / SEDAN</span>
+        </div>
+        
+        <!-- Breadcrumbs Mobile -->
+        <div class="lg:hidden container mx-auto px-6 py-3 flex justify-between items-center">
+            <span class="text-sm font-semibold text-gray-700">TRANG CHỦ / SEDAN</span>
+            <button class="flex items-center space-x-1 text-sm font-semibold p-2 -mr-2">
+                <i class="fas fa-filter text-xs"></i>
+                <span>LỌC</span>
+            </button>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- === PRODUCT INTRO (SLIDER & INFO) === -->
+        <!-- Xếp chồng 1 cột trên mobile, 2 cột (50/50) trên desktop -->
+        <section class="container mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+                
+                <!-- === CỘT BÊN TRÁI (IMAGE GALLERY) === -->
+                <div class="w-full">
+                    <!-- Main Image Slider -->
+                    <div class="relative w-full aspect-[3/2] overflow-hidden rounded-lg">
+                        <!-- Wrapper cho các ảnh lớn (Thêm overflow-hidden) -->
+                        <div id="main-image-slider" class="flex w-full h-full scroll-smooth snap-x snap-mandatory overflow-hidden">
+                            <!-- Ảnh lớn sẽ được JS tự động thêm vào đây -->
+                        </div>
+
+                        <!-- Nút Previous -->
+                        <button id="main-prev" class="absolute top-1/2 left-2 lg:left-4 -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10">
+                            <i class="fas fa-chevron-left w-5 h-5"></i>
+                        </button>
+                        <!-- Nút Next -->
+                        <button id="main-next" class="absolute top-1/2 right-2 lg:right-4 -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10">
+                            <i class="fas fa-chevron-right w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Thumbnail Slider - Ẩn trên mobile, hiện trên desktop -->
+                    <div id="thumbnail-slider-container" class="relative w-full mt-4 hidden lg:flex items-center">
+                        <!-- Nút Previous (Thumbnail) -->
+                        <button id="thumb-prev" class="absolute -left-3 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10">
+                            <i class="fas fa-chevron-left w-4 h-4"></i>
+                        </button>
+                        
+                        <!-- Container cho thumbnail -->
+                        <div id="thumbnail-slider" class="flex w-full space-x-3 overflow-x-auto scroll-smooth snap-x snap-mandatory py-1">
+                            <img src="img\toyota-camry-241024-c05-768x432.jpg" alt="Camry 1" class="thumbnail-img cursor-pointer rounded-md border-2 border-red-600 flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start" data-index="0">
+                            <img src="img\toyota-camry-241024-c03.jpg" alt="Camry 2" class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start" data-index="1">
+                            <img src="img\toyota-camry-241024-c04-768x432.jpg" alt="Camry 3" class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start" data-index="2">
+                            <img src="img\toyota-camry-241024-c02.jpg" alt="Camry 4" class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start" data-index="3">
+                            <img src="img\toyota-camry-241024-c01.jpg" alt="Camry 5" class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start" data-index="4">
+                        </div>
+
+                        <!-- Nút Next (Thumbnail) -->
+                        <button id="thumb-next" class="absolute -right-3 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10">
+                            <i class="fas fa-chevron-right w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- === CỘT BÊN PHẢI (PRODUCT INFO) === -->
+                <!-- Thêm mt-6 trên mobile, mt-0 trên desktop -->
+                <div class="w-full mt-6 lg:mt-0">
+                    <!-- Tiêu đề -->
+                    <h1 class="text-3xl lg:text-4xl font-bold text-red-600">TOYOTA CAMRY</h1>
+                    
+                    <!-- Giá -->
+                    <div class="text-3xl font-bold text-gray-900 mt-3 mb-4">1.220.000.000 ₫</div>
+
+                    <!-- Bảng giá xe -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden mb-4">
+                        <div class="bg-gray-200 p-3">
+                            <h2 class="text-lg font-semibold">BẢNG GIÁ XE TOYOTA CAMRY</h2>
+                        </div>
+                        <ul class="p-4 space-y-2 text-sm">
+                            <li class="flex justify-between font-bold"><span>Toyota Camry 2.0Q:</span> <span class="font-semibold">1.220.000.000 VNĐ</span></li>
+                            <li class="flex justify-between font-bold"><span>Toyota Camry HEV MID:</span> <span class="font-semibold">1.460.000.000 VNĐ</span></li>
+                            <li class="flex justify-between font-bold"><span>Toyota Camry HEV TOP:</span> <span class="font-semibold">1.530.000.000 VNĐ</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Khuyến mãi -->
+                    <div class="bg-red-600 text-white rounded-lg p-4 mb-4">
+                        <h3 class="text-lg font-semibold">KHUYẾN MÃI & ƯU ĐÃI</h3>
+                        <p class="text-sm mt-1">*Quý khách liên hệ hotline, nhận thông tin khuyến mãi và ưu đãi.</p>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex space-x-3 text-gray-500">
+                        <a href="#" class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fab fa-twitter text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fab fa-pinterest text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === TABS (MÔ TẢ / ĐÁNH GIÁ) === -->
+        <section class="container mx-auto px-6 py-8 mt-4">
+            <!-- Tab Buttons -->
+            <div class="border-b border-gray-300 flex space-x-6">
+                <button id="tab-desc" class="tab-btn text-base font-semibold py-3 border-b-2 border-red-600 text-red-600">
+                    MÔ TẢ
+                </button>
+                <button id="tab-reviews" class="tab-btn text-base font-semibold py-3 border-b-2 border-transparent text-gray-600 hover:text-red-600">
+                    ĐÁNH GIÁ (0)
+                </button>
+            </div>
+
+            <!-- Tab Panels -->
+            <div class="mt-6">
+                <!-- Description Panel -->
+                <div id="panel-desc" class="tab-panel space-y-4">
+                    <!-- Cấu trúc 3 ảnh -->
+                    <div class="space-y-2 lg:space-y-4">
+                        <img src="img\toyota-camry-241024-banner-t-01.jpg" alt="Camry Banner" class="w-full rounded-lg">
+                        <!-- 1 cột trên mobile, 2 cột trên desktop -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4">
+                            <img src="img\toyota-camry-ngoai-that-241024-22c.jpg" alt="Camry Front" class="w-full rounded-lg">
+                            <img src="img\toyota-camry-ngoai-that-241024-22d.jpg" alt="Camry Back" class="w-full rounded-lg">
+                        </div>
+                    </div>
+
+                    <!-- Cấu trúc 4 thông số -->
+                    <div class="py-4 mt-4">
+                        <div class="flex items-center mb-6">
+                            <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                            <h2 class="text-3xl font-bold uppercase">TOYOTA CAMRY</h2>
+                        </div>
+                        <!-- 2 cột trên mobile, 4 cột trên desktop -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                            <div class="lg:border-r border-gray-300 pr-4">
+                                <span class="text-sm text-gray-600 block">Kiểu dáng</span>
+                                <span class="text-2xl lg:text-3xl font-bold">Sedan</span>
+                            </div>
+                            <div class="lg:border-r border-gray-300 pr-4">
+                                <span class="text-sm text-gray-600 block">Nhiên liệu</span>
+                                <span class="text-2xl lg:text-3xl font-bold">Xăng</span>
+                            </div>
+                            <div class="lg:border-r border-gray-300 pr-4">
+                                <span class="text-sm text-gray-600 block">Số ghế ngồi</span>
+                                <span class="text-2xl lg:text-3xl font-bold">5</span>
+                            </div>
+                            <div>
+                                <span class="text-sm text-gray-600 block">Xuất xứ</span>
+                                <span class="text-2xl lg:text-3xl font-bold">Thái Lan</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-200 p-4 lg:p-6 rounded-lg mt-6 text-gray-700">
+                            <p>Toyota Camry mới với thiết kế trẻ trung, thanh lịch và mang trong mình các tính năng tiên tiến vượt trội như công nghệ Hybrid, công nghệ an toàn tiên tiến và công nghệ vận hành mạnh mẽ cho cảm giác lái êm ái, Toyota Camry không chỉ là phương tiện di chuyển, đó là cuộc sống tiện nghi của những con người thành đạt.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cấu trúc Ngoại thất -->
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                            <h2 class="text-3xl font-bold uppercase">NGOẠI THẤT CAMRY MỚI.</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Ngoại thất tinh tế mạnh mẽ</h3>
+                            <p class="text-gray-700">Mang bản lĩnh và tinh hoa của thế hệ dẫn đầu, Toyota Camry mới - với thiết kế thể thao, năng động, công nghệ Hybrid mở ra con đường bền vững và vị thế thống lĩnh dòng xe Sedan, sẽ là biểu tượng đẳng cấp, đồng hành cùng bạn chinh phục những đỉnh cao mới.</p>
+                            <img src="img\toyota-camry-ngoai-that-241024-21.jpg" alt="Ngoại thất Camry" class="w-full rounded-lg">
+                            <div class="text-center text-gray-600 italic text-sm">Ngoại Thất Toyota Camry Mới</div>
+                        </div>
+                        
+                        <!-- 1 cột trên mobile, 2 trên desktop -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                            <!-- Feature 1 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-23.jpg" alt="Đầu xe" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Đầu xe</h4>
+                                    <p class="text-sm text-gray-700">Thiết kế đầu xe lấy cảm hứng từ hình ảnh "cá mập đầu búa" tạo nên hình ảnh mạnh mẽ đầy uy lực.</p>
+                                </div>
+                            </div>
+                            <!-- Feature 2 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-24.jpg" alt="Cụm đèn trước" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Cụm đèn trước</h4>
+                                    <p class="text-sm text-gray-700">Thiết kế khỏe khoắn tăng thêm tính thể thao, mạnh mẽ trong diện mạo khi nhìn từ phía sau.</p>
+                                </div>
+                            </div>
+                            <!-- Feature 3 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-25.jpg" alt="Cụm đèn sau" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Cụm đèn sau</h4>
+                                    <p class="text-sm text-gray-700">Thiết kế khỏe khoắn tăng thêm tính thể thao, mạnh mẽ trong diện mạo khi nhìn từ phía sau.</p>
+                                </div>
+                            </div>
+                            <!-- Feature 4 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-27.jpg" alt="Cản trước" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Cản trước</h4>
+                                    <p class="text-sm text-gray-700">Cản trước họa tiết kim cương mở rộng sang hai bên tạo sự bề thế, sang trọng.</p>
+                                </div>
+                            </div>
+                            <!-- Feature 5 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-26.jpg" alt="Thân xe" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Thân xe</h4>
+                                    <p class="text-sm text-gray-700">Thân xe mạnh mẽ nhờ các đường gân dập nổi kéo dài.</p>
+                                </div>
+                            </div>
+                            <!-- Feature 6 -->
+                            <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                                <img src="img\toyota-camry-ngoai-that-241024-28.jpg" alt="Mâm xe" class="w-full h-auto object-cover">
+                                <div class="p-4 bg-gray-200 flex-grow">
+                                    <h4 class="font-bold text-lg mb-1">Mâm xe</h4>
+                                    <p class="text-sm text-gray-700">Mâm xe đa chấu 18" cho cảm giác bề thế và mạnh mẽ.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cấu trúc Thông số kỹ thuật -->
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                            <h2 class="text-3xl font-bold uppercase">THÔNG SỐ KỸ THUẬT TOYOTA CAMRY.</h2>
+                        </div>
+                        <p class="text-gray-700 mb-4">Bảng thông số kỹ thuật chi tiết các phiên bản xe Toyota Camry: Toyota Camry 2.5HEV Top, Toyota Camry 2.5HEV Mid, Toyota Camry 2.0Q</p>
+                        <!-- 2 ảnh ghép lại -->
+                        <div class="w-full space-y-0">
+                             <img src="img\toyota-camry-tskt-241024-71.jpg" alt="Thông số kỹ thuật 1" class="w-full">
+                             <img src="img\toyota-camry-tskt-241024-72b.jpg" alt="Thông số kỹ thuật 2" class="w-full">
+                        </div>
+                    </div>
+                    
+                    <!-- Cấu trúc Thư viện ảnh -->
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                            <h2 class="text-3xl font-bold uppercase">THƯ VIỆN ẢNH TOYOTA CAMRY.</h2>
+                        </div>
+                        <!-- 1 cột trên mobile, 2 trên desktop -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            <img src="img\toyota-camry-ngoai-that-241024-21.jpg" alt="Thư viện ảnh 1" class="w-full rounded-lg">
+                            <img src="img\toyota-camry-ngoai-that-241024-22c.jpg" alt="Thư viện ảnh 2" class="w-full rounded-lg">
+                            <img src="img\toyota-camry-ngoai-that-241024-22d.jpg" alt="Thư viện ảnh 3" class="w-full rounded-lg">
+                            <img src="img\toyota-camry-ngoai-that-241024-26.jpg" alt="Thư viện ảnh 4" class="w-full rounded-lg">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Reviews Panel -->
+                <div id="panel-reviews" class="tab-panel hidden space-y-6">
+                    <h3 class="text-2xl font-semibold">Đánh giá</h3>
+                    <p class="text-gray-600">Chưa có đánh giá nào.</p>
+                    <div class="border border-red-300 bg-red-50 p-6 rounded-lg text-red-800">
+                        <p>Chỉ những khách hàng đã đăng nhập và đã mua sản phẩm này mới có thể để lại đánh giá.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === ƯU ĐÃI & KHUYẾN MÃI === -->
+        <section class="bg-gray-600 text-white">
+            <div class="container mx-auto px-6 py-8">
+                <!-- 1 cột trên mobile, 2 cột trên desktop -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">Ưu đãi & Khuyến mãi</h3>
+                        <p class="text-gray-200 text-sm">Quà tặng dành cho khách hàng gửi yêu cầu báo giá Online.</p>
+                        <p class="text-gray-200 text-sm">* Quý khách vui lòng liên hệ hotline tư vấn, nhận thông tin ưu đãi và khuyến mãi.</p>
+                    </div>
+                    <div class="lg:justify-self-end">
+                        <div class="bg-red-600 p-3 rounded-lg font-bold text-xl text-center animate-pulse">
+                            Hotline: 09876543210
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="bg-black text-gray-400">
+        <div class="container mx-auto px-6 py-10">
+            <!-- 1 cột (căn giữa) trên mobile, 3 cột (căn trái) trên desktop -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center lg:text-left">
+                <!-- Cột 1: Toyota VLU -->
+                <div class="space-y-4 flex flex-col items-center lg:items-start">
+                    <h4 class="text-xl font-bold text-white">Toyota VLU</h4>
+                    <p class="text-sm font-bold">Cơ sở 1: 45 Nguyễn Khắc Nhu, Phường Cô Giang, Quận 1, TP.HCM.</p>
+                    <p class="text-sm font-bold">Cơ sở 2: 233A Phan Văn Trị, Phường 11, Quận Bình Thạnh, TP.HCM.</p>
+                    <p class="text-sm font-bold">Cơ sở 3: 69/68 Đặng Thùy Trâm, Phường 13, Quận Bình Thạnh, TP.HCM.</p>
+                </div>
+                
+                <!-- Cột 2: Hỗ trợ khách hàng -->
+                <div class="space-y-4 flex flex-col items-center lg:items-start">
+                    <h4 class="text-xl font-bold text-white">Hỗ trợ khách hàng</h4>
+                    <p class="text-sm font-bold">Hotline: 09876543210</p>
+                    <p class="text-sm font-bold">Email: toyotavlu@gmail.com</p>
+                </div>
+
+                <!-- Cột 3: Follow -->
+                <div class="space-y-4 flex flex-col items-center lg:items-start">
+                    <h4 class="text-xl font-bold text-white">Follow</h4>
+                    <div class="flex space-x-3 justify-center lg:justify-start">
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer (Copyright) -->
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col items-center lg:items-start space-y-3">
+                <!-- Links - Xếp ngang (wrap) trên mobile, căn giữa -->
+                <div class="flex flex-row flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-xs">
+                    <a href="#" class="hover:text-white">TRANG CHỦ</a>
+                    <a href="#" class="hover:text-white">CHÍNH SÁCH BẢO MẬT</a>
+                    <a href="#" class="hover:text-white">LIÊN HỆ</a>
+                </div>
+                <!-- Copyright - Căn giữa trên mobile -->
+                <div class="text-xs text-center lg:text-left">Copyright 2025 ©</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- === JAVASCRIPT === -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // --- Main Image Slider ---
+            const mainSlider = document.getElementById('main-image-slider');
+            const mainPrev = document.getElementById('main-prev');
+            const mainNext = document.getElementById('main-next');
+            const thumbnails = Array.from(document.querySelectorAll('.thumbnail-img'));
+            
+            // --- Thumbnail Slider ---
+            const thumbSlider = document.getElementById('thumbnail-slider');
+            const thumbPrev = document.getElementById('thumb-prev');
+            const thumbNext = document.getElementById('thumb-next');
+
+            let currentIndex = 0;
+            let totalSlides = 0;
+            let isAnimating = false; // Cờ (flag) để ngăn click nhanh
+
+            // Tự động tạo ảnh lớn từ ảnh thumbnail
+            if (mainSlider && thumbnails.length > 0) {
+                thumbnails.forEach((thumb, index) => {
+                    const largeImage = document.createElement('img');
+                    largeImage.src = thumb.src.replace('400x300', '1200x800').replace('600x400', '1200x800'); // Lấy ảnh lớn hơn
+                    largeImage.alt = thumb.alt;
+                    largeImage.className = "w-full h-full object-cover flex-none snap-center";
+                    largeImage.dataset.index = index;
+                    mainSlider.appendChild(largeImage);
+                });
+                totalSlides = thumbnails.length;
+            } else {
+                return; // Không có slider thì dừng
+            }
+
+            // --- HÀM CẬP NHẬT ---
+
+            // 1. Chỉ cuộn Slider chính (Khi bấm nút)
+            function updateMainSlider(newIndex) {
+                const newScrollLeft = mainSlider.clientWidth * newIndex;
+                mainSlider.scrollTo({
+                    left: newScrollLeft,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // 2. Chỉ cập nhật Thumbnail (Khi bấm nút)
+            function updateThumbnails(newIndex) {
+                if (newIndex < 0) newIndex = totalSlides - 1;
+                if (newIndex >= totalSlides) newIndex = 0;
+                currentIndex = newIndex;
+
+                if (thumbSlider) {
+                    // Highlight thumbnail
+                    thumbnails.forEach((thumb, idx) => {
+                        thumb.classList.toggle('border-red-600', idx === currentIndex);
+                        thumb.classList.toggle('border-transparent', idx !== currentIndex);
+                    });
+
+                    // Tự động cuộn thumbnail vào giữa
+                    const activeThumb = thumbnails[currentIndex];
+                    if (activeThumb) {
+                        const sliderRect = thumbSlider.getBoundingClientRect();
+                        const thumbRect = activeThumb.getBoundingClientRect();
+                        const scrollOffset = (thumbRect.left - sliderRect.left) - (sliderRect.width / 2) + (thumbRect.width / 2);
+                        
+                        thumbSlider.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+                    }
+                }
+            }
+            
+            // 3. Hàm tổng hợp (Khi bấm nút hoặc click thumb)
+            function updateSlider(newIndex) {
+                // Kiểm tra cờ (flag)
+                if (isAnimating) return; 
+
+                if (newIndex < 0) newIndex = totalSlides - 1;
+                if (newIndex >= totalSlides) newIndex = 0;
+                
+                // Bật cờ
+                isAnimating = true; 
+                
+                currentIndex = newIndex;
+                updateMainSlider(currentIndex);
+                updateThumbnails(currentIndex);
+
+                // Tắt cờ sau khi animation hoàn thành
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 600); // 600ms là thời gian đủ cho 'scroll-smooth'
+            }
+            
+
+            // --- GÁN SỰ KIỆN ---
+            
+            // Nút bấm Main Slider
+            mainPrev.addEventListener('click', () => updateSlider(currentIndex - 1));
+            mainNext.addEventListener('click', () => updateSlider(currentIndex + 1));
+
+            // Click vào Thumbnail
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    updateSlider(parseInt(thumb.dataset.index));
+                });
+            });
+
+            // Nút bấm Thumbnail Slider
+            if (thumbPrev && thumbNext && thumbSlider) {
+                thumbPrev.addEventListener('click', () => {
+                    thumbSlider.scrollBy({ left: -thumbSlider.clientWidth / 2, behavior: 'smooth' });
+                });
+                thumbNext.addEventListener('click', () => {
+                    thumbSlider.scrollBy({ left: thumbSlider.clientWidth / 2, behavior: 'smooth' });
+                });
+            }
+
+            // --- Tab Switching (Mô tả / Đánh giá) ---
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Lấy target panel
+                    const targetPanelId = button.id === 'tab-desc' ? 'panel-desc' : 'panel-reviews';
+                    const targetPanel = document.getElementById(targetPanelId);
+
+                    // Xử lý nút
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-red-600', 'border-red-600');
+                        btn.classList.add('text-gray-600', 'border-transparent');
+                    });
+                    button.classList.add('text-red-600', 'border-red-600');
+                    button.classList.remove('text-gray-600', 'border-transparent');
+
+                    // Xử lý panel
+                    tabPanels.forEach(panel => {
+                        if (panel.id === targetPanelId) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>

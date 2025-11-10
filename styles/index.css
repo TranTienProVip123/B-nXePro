@@ -63,6 +63,59 @@ nav {
   color: #eb0a1e;
 }
 
+/* Dropdown Menu Styles */
+.nav-menu .dropdown {
+  position: relative;
+}
+
+.nav-menu .dropdown .dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Khoảng cách giữa chữ SẢN PHẨM và mũi tên */
+}
+
+.nav-menu .dropdown .dropbtn .fa-chevron-down {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 100;
+  border-radius: 4px;
+  padding: 8px 0;
+  /* margin-top: 10px; */ /* Xóa dòng này */
+  top: 100%; /* Đặt vị trí của dropdown ngay dưới phần tử cha */
+  padding-top: 10px; /* Dùng padding để tạo khoảng trống bên trong dropdown */
+  border-top: 10px solid transparent; /* Tạo một đường viền trong suốt để không thể click vào */
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 15px; /* Chỉnh lại kích thước font cho dễ đọc */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
 .nav-icons {
   display: flex;
   gap: 20px;

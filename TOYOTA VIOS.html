@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toyota Vios - Toyota VLU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Ẩn thanh cuộn cho slider */
+      #main-image-slider::-webkit-scrollbar,
+      #thumbnail-slider::-webkit-scrollbar {
+        display: none;
+      }
+      #main-image-slider,
+      #thumbnail-slider {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      /* Dropdown Menu Styles */
+      .nav-menu .dropdown {
+        position: relative;
+      }
+
+      .nav-menu .dropdown .dropbtn {
+        display: flex;
+        align-items: center;
+        gap: 6px; /* Khoảng cách giữa chữ SẢN PHẨM và mũi tên */
+      }
+
+      .nav-menu .dropdown .dropbtn .fa-chevron-down {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        border-radius: 4px;
+        padding: 8px 0;
+        top: 70%; /* Đặt vị trí của dropdown ngay dưới phần tử cha */
+        padding-top: 0px;
+        border-top: 0px solid transparent;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 15px; /* Chỉnh lại kích thước font cho dễ đọc */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn .fa-chevron-down {
+        transform: rotate(180deg);
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      /* Custom Styles for Vios Details */
+      .detail-card {
+        @apply rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col;
+      }
+      .detail-card h4 {
+        @apply font-bold text-lg mb-1;
+      }
+      .detail-card p {
+        @apply text-sm text-gray-700;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased text-gray-900">
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="w-full py-2 px-6 border-b border-gray-200 hidden lg:flex justify-between items-center text-xs text-gray-600"
+      >
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-1">
+            <i class="fas fa-location-dot"></i>
+            <span
+              >69/68 Đặng Thùy Trâm, Phường 13, Quận Bình Thạnh, TP.HCM.</span
+            >
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-1">
+            <span>Trải nghiệm khách hàng</span>
+          </div>
+          <div class="border-l h-4 border-gray-300"></div>
+          <div class="flex items-center space-x-1">
+            <i class="fas fa-phone-volume"></i>
+            <span>09876543210</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="w-full py-4 px-6 border-b-2 border-red-600">
+        <div class="container mx-auto flex justify-between items-center">
+          <div class="logo">
+            <a href="index.html"
+              ><img src="img/logo.png" alt="Toyota Thủ Đức"
+            /></a>
+          </div>
+
+          <div class="lg:hidden flex justify-between items-center w-full">
+            <button
+              id="mobile-menu-btn"
+              class="flex items-center space-x-2 p-2"
+            >
+              <i class="fas fa-bars text-xl"></i>
+              <span class="font-semibold text-sm">MENU</span>
+            </button>
+            <a href="#">
+              <span class="text-2xl font-bold text-red-600 tracking-wider"
+                >TOYOTA</span
+              >
+            </a>
+            <button class="p-2">
+              <i class="fas fa-search text-xl"></i>
+            </button>
+          </div>
+
+          <div class="hidden lg:flex items-center space-x-6 pl-12">
+            <div
+              class="nav-menu flex items-center space-x-6 text-sm font-semibold uppercase"
+            >
+              <a href="index.html" class="hover:text-red-600">Trang Chủ</a>
+              <li class="dropdown list-none">
+                <a href="#products" class="dropbtn hover:text-red-600"
+                  >SẢN PHẨM <i class="fas fa-chevron-down"></i
+                ></a>
+                <div class="dropdown-content">
+                  <a href="Toyota-Camry.html">Toyota Camry</a>
+                  <a href="Toyota-Corolla-Altis.html">Toyota Corolla Altis</a>
+                  <a href="Toyota-Vios.html">Toyota Vios</a>
+                  <a href="Toyota-Fortuner.html">Toyota Fortuner</a>
+                  <a href="product-page-5.html">Sản phẩm 5</a>
+                  <a href="product-page-6.html">Sản phẩm 6</a>
+                </div>
+              </li>
+              <a href="#" class="hover:text-red-600">Dịch Vụ</a>
+              <a href="#" class="hover:text-red-600">Video Blog</a>
+              <a href="news-event.html" class="hover:text-red-600"
+                >Tin Tức & Sự Kiện</a
+              >
+              <a href="contact.html" class="hover:text-red-600">Liên Hệ</a>
+            </div>
+
+            <div class="flex items-center space-x-3 text-gray-500">
+              <button class="hover:text-red-600 p-1">
+                <i class="fas fa-search fa-fw"></i>
+              </button>
+              <span class="border-l h-5 border-gray-300"></span>
+              <a
+                href="#"
+                class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fas fa-envelope fa-fw text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fas fa-phone fa-fw text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="p-1 w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fab fa-youtube fa-fw text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden w-full absolute top-full left-0 bg-white shadow-lg z-40 border-t border-gray-200"
+      >
+        <div class="flex flex-col p-4 space-y-3">
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Trang Chủ</a
+          >
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Sản Phẩm</a
+          >
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Dịch Vụ</a
+          >
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Video Blog</a
+          >
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Tin Tức & Sự Kiện</a
+          >
+          <a
+            href="#"
+            class="block p-2 font-semibold uppercase hover:bg-gray-100 rounded"
+            >Liên Hệ</a
+          >
+
+          <div class="border-t my-3"></div>
+
+          <div class="flex space-x-4 p-2">
+            <a
+              href="#"
+              class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+            >
+              <i class="fas fa-envelope fa-fw"></i>
+            </a>
+            <a
+              href="#"
+              class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+            >
+              <i class="fas fa-phone fa-fw"></i>
+            </a>
+            <a
+              href="#"
+              class="p-2 w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600"
+            >
+              <i class="fab fa-youtube fa-fw"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="w-full border-b border-gray-200">
+      <div class="container mx-auto px-6 py-4 hidden lg:block">
+        <span class="text-base font-semibold text-gray-700"
+          >TRANG CHỦ / SEDAN</span
+        >
+      </div>
+
+      <div
+        class="lg:hidden container mx-auto px-6 py-3 flex justify-between items-center"
+      >
+        <span class="text-sm font-semibold text-gray-700"
+          >TRANG CHỦ / SEDAN</span
+        >
+        <button
+          class="flex items-center space-x-1 text-sm font-semibold p-2 -mr-2"
+        >
+          <i class="fas fa-filter text-xs"></i>
+          <span>LỌC</span>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <section class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+          <div class="w-full">
+            <div
+              class="relative w-full aspect-[3/2] overflow-hidden rounded-lg"
+            >
+              <div
+                id="main-image-slider"
+                class="flex w-full h-full scroll-smooth snap-x snap-mandatory overflow-hidden"
+              >
+                </div>
+
+              <button
+                id="main-prev"
+                class="absolute top-1/2 left-2 lg:left-4 -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10"
+              >
+                <i class="fas fa-chevron-left w-5 h-5"></i>
+              </button>
+              <button
+                id="main-next"
+                class="absolute top-1/2 right-2 lg:right-4 -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10"
+              >
+                <i class="fas fa-chevron-right w-5 h-5"></i>
+              </button>
+            </div>
+
+            <div
+              id="thumbnail-slider-container"
+              class="relative w-full mt-4 hidden lg:flex items-center"
+            >
+              <button
+                id="thumb-prev"
+                class="absolute -left-3 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10"
+              >
+                <i class="fas fa-chevron-left w-4 h-4"></i>
+              </button>
+
+              <div
+                id="thumbnail-slider"
+                class="flex w-full space-x-3 overflow-x-auto scroll-smooth snap-x snap-mandatory py-1"
+              >
+                <img
+                  src="img/vios_main_trang.jpg"
+                  alt="Vios Trắng"
+                  class="thumbnail-img cursor-pointer rounded-md border-2 border-red-600 flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start"
+                  data-index="0"
+                />
+                <img
+                  src="img/vios_thumb_do.jpg"
+                  alt="Vios Đỏ"
+                  class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start"
+                  data-index="1"
+                />
+                <img
+                  src="img/vios_thumb_noithat.jpg"
+                  alt="Vios Nội thất"
+                  class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start"
+                  data-index="2"
+                />
+                <img
+                  src="img/vios_thumb_ghe.jpg"
+                  alt="Vios Ghế da"
+                  class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start"
+                  data-index="3"
+                />
+                <img
+                  src="img/vios_thumb_volang.jpg"
+                  alt="Vios Vô lăng"
+                  class="thumbnail-img cursor-pointer rounded-md border-2 border-transparent flex-none w-[calc(25%_-_9px)] aspect-[3/2] object-cover snap-start"
+                  data-index="4"
+                />
+              </div>
+
+              <button
+                id="thumb-next"
+                class="absolute -right-3 bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full shadow-md z-10"
+              >
+                <i class="fas fa-chevron-right w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="w-full mt-6 lg:mt-0">
+            <h1 class="text-3xl lg:text-4xl font-bold text-red-600">
+              TOYOTA VIOS
+            </h1>
+
+            <div class="text-3xl font-bold text-gray-900 mt-3 mb-4">
+              479.000.000 ₫
+            </div>
+
+            <div class="border border-gray-200 rounded-lg overflow-hidden mb-4">
+              <div class="bg-gray-200 p-3">
+                <h2 class="text-lg font-semibold">BẢNG GIÁ XE TOYOTA VIOS</h2>
+              </div>
+              <ul class="p-4 space-y-2 text-sm">
+                <li class="flex justify-between font-bold">
+                  <span>Toyota Vios 1.5 E MT:</span>
+                  <span class="font-semibold text-red-600">479.000.000 VNĐ</span>
+                </li>
+                <li class="flex justify-between font-bold">
+                  <span>Toyota Vios 1.5 E CVT:</span>
+                  <span class="font-semibold text-red-600">528.000.000 VNĐ</span>
+                </li>
+                <li class="flex justify-between font-bold">
+                  <span>Toyota Vios 1.5 G CVT:</span>
+                  <span class="font-semibold text-red-600">592.000.000 VNĐ</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-red-600 text-white rounded-lg p-4 mb-4">
+              <h3 class="text-lg font-semibold">KHUYẾN MÃI & ƯU ĐÃI</h3>
+              <p class="text-sm mt-1">
+                *Quý khách liên hệ hotline, nhận thông tin khuyến mãi và ưu đãi.
+              </p>
+            </div>
+
+            <div class="flex space-x-3 text-gray-500">
+              <a
+                href="#"
+                class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fab fa-twitter text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fas fa-envelope text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fab fa-pinterest text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                <i class="fab fa-linkedin-in text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-6 py-8 mt-4">
+        <div class="border-b border-gray-300 flex space-x-6">
+          <button
+            id="tab-desc"
+            class="tab-btn text-base font-semibold py-3 border-b-2 border-red-600 text-red-600"
+          >
+            MÔ TẢ
+          </button>
+          <button
+            id="tab-reviews"
+            class="tab-btn text-base font-semibold py-3 border-b-2 border-transparent text-gray-600 hover:text-red-600"
+          >
+            ĐÁNH GIÁ (0)
+          </button>
+        </div>
+
+        <div class="mt-6">
+          <div id="panel-desc" class="tab-panel space-y-8">
+            <div class="py-4">
+              <div class="flex items-center mb-6">
+                <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                <h2 class="text-3xl font-bold uppercase">TOYOTA VIOS</h2>
+              </div>
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                <div class="lg:border-r border-gray-300 pr-4">
+                  <span class="text-sm text-gray-600 block">Kiểu dáng</span>
+                  <span class="text-2xl lg:text-3xl font-bold">Sedan</span>
+                </div>
+                <div class="lg:border-r border-gray-300 pr-4">
+                  <span class="text-sm text-gray-600 block">Nhiên liệu</span>
+                  <span class="text-2xl lg:text-3xl font-bold">Xăng</span>
+                </div>
+                <div class="lg:border-r border-gray-300 pr-4">
+                  <span class="text-sm text-gray-600 block">Số ghế ngồi</span>
+                  <span class="text-2xl lg:text-3xl font-bold">5</span>
+                </div>
+                <div>
+                  <span class="text-sm text-gray-600 block">Xuất xứ</span>
+                  <span class="text-2xl lg:text-3xl font-bold">Việt Nam</span>
+                </div>
+              </div>
+              <div class="bg-gray-200 p-4 lg:p-6 rounded-lg mt-6 text-gray-700">
+                <p>
+                  Toyota Vios mới mang thiết kế thể thao, năng động cùng nội thất
+                  rộng rãi, tiện nghi vượt trội. Với khả năng vận hành bền bỉ và
+                  tiết kiệm nhiên liệu, Vios tiếp tục khẳng định vị thế là mẫu
+                  xe Sedan cỡ nhỏ hàng đầu tại thị trường Việt Nam.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-4 mt-4 border-t border-gray-200">
+              <div class="flex items-center mb-6">
+                <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                <h2 class="text-3xl font-bold uppercase">
+                  NGOẠI THẤT TRẺ TRUNG VÀ NĂNG ĐỘNG
+                </h2>
+              </div>
+              <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Thiết kế khỏe khoắn và đầy cá tính
+                </h3>
+                <p class="text-gray-700">
+                  Thiết kế đầu xe mới tạo hình chữ X sắc nét, cùng với đèn LED
+                  hiện đại mang đến diện mạo thể thao, trẻ trung và mạnh mẽ.
+                </p>
+                <img
+                  src="img/vios_ngoai_that_banner.jpg"
+                  alt="Ngoại thất Vios"
+                  class="w-full rounded-lg"
+                />
+                <div class="text-center text-gray-600 italic text-sm">
+                  Toyota Vios 2023
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <div class="detail-card">
+                  <img
+                    src="img/vios_den_truoc.jpg"
+                    alt="Đầu xe"
+                    class="w-full h-auto object-cover"
+                  />
+                  <div class="p-4 bg-gray-200 flex-grow">
+                    <h4 class="font-bold text-lg mb-1">Đèn trước LED</h4>
+                    <p class="text-sm text-gray-700">
+                      Cụm đèn pha LED dạng bóng chiếu hiện đại, tích hợp đèn định vị
+                      ban ngày, tăng khả năng chiếu sáng và tính thẩm mỹ.
+                    </p>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <img
+                    src="img/vios_den_sau.jpg"
+                    alt="Cụm đèn sau"
+                    class="w-full h-auto object-cover"
+                  />
+                  <div class="p-4 bg-gray-200 flex-grow">
+                    <h4 class="font-bold text-lg mb-1">Cụm đèn sau</h4>
+                    <p class="text-sm text-gray-700">
+                      Thiết kế dạng LED mỏng, sắc nét, nối liền với đường viền mạ
+                      Chrome chạy ngang cốp xe, tạo cảm giác rộng rãi.
+                    </p>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <img
+                    src="img/vios_thumb_do1.jpg"
+                    alt="Cản sau"
+                    class="w-full h-auto object-cover"
+                  />
+                  <div class="p-4 bg-gray-200 flex-grow">
+                    <h4 class="font-bold text-lg mb-1">Cản sau</h4>
+                    <p class="text-sm text-gray-700">
+                      Cản sau được thiết kế lại, mạnh mẽ hơn, cùng với đèn phản quang
+                      được đặt cao hơn, mang lại vẻ thể thao.
+                    </p>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <img
+                    src="img/vios_thumb_mam.jpg"
+                    alt="Mâm xe"
+                    class="w-full h-auto object-cover"
+                  />
+                  <div class="p-4 bg-gray-200 flex-grow">
+                    <h4 class="font-bold text-lg mb-1">Mâm xe hợp kim</h4>
+                    <p class="text-sm text-gray-700">
+                      Mâm xe 15 inch đa chấu phay xước (bản G) thiết kế mới, tạo ấn
+                      tượng khỏe khoắn và hiện đại.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 mt-8 border-t border-gray-200">
+              <div class="flex items-center mb-6">
+                <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                <h2 class="text-3xl font-bold uppercase">
+                  NỘI THẤT TINH TẾ & TIỆN NGHI
+                </h2>
+              </div>
+              <p class="text-gray-700 mb-6">
+                Khoang cabin rộng rãi, thiết kế tinh tế với ghế da cao cấp, cùng
+                nhiều tiện ích hiện đại giúp tối ưu trải nghiệm lái xe hàng ngày.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="text-center">
+                  <img
+                    src="img/vios_man_hinh.jpg"
+                    alt="Màn hình giải trí"
+                    class="w-full h-40 object-cover rounded-lg"
+                  />
+                  <h4 class="font-bold mt-3">Màn hình giải trí</h4>
+                  <p class="text-sm text-gray-700">
+                    Màn hình cảm ứng 9 inch (bản G) kết nối Apple CarPlay và Android
+                    Auto, mang lại trải nghiệm giải trí đa dạng.
+                  </p>
+                </div>
+                <div class="text-center">
+                  <img
+                    src="img/vios_dong_ho.jpg"
+                    alt="Đồng hồ"
+                    class="w-full h-40 object-cover rounded-lg"
+                  />
+                  <h4 class="font-bold mt-3">Đồng hồ Optitron</h4>
+                  <p class="text-sm text-gray-700">
+                    Đồng hồ Optitron phát sáng, hiển thị đa thông tin, giúp người lái
+                    dễ dàng quan sát thông số vận hành.
+                  </p>
+                </div>
+                <div class="text-center">
+                  <img
+                    src="img/vios_dieu_hoa.jpg"
+                    alt="Điều hòa tự động"
+                    class="w-full h-40 object-cover rounded-lg"
+                  />
+                  <h4 class="font-bold mt-3">Điều hòa tự động</h4>
+                  <p class="text-sm text-gray-700">
+                    Hệ thống điều hòa tự động (bản G) với khả năng làm lạnh nhanh và
+                    ổn định.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 mt-8 border-t border-gray-200">
+              <div class="flex items-center mb-6">
+                <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                <h2 class="text-3xl font-bold uppercase">
+                  THÔNG SỐ KỸ THUẬT TOYOTA VIOS.
+                </h2>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Bảng thông số kỹ thuật chi tiết các phiên bản xe Toyota Vios 2024.
+              </p>
+              <div class="w-full space-y-0">
+                <img
+                  src="img/vios_tskt.jpg"
+                  alt="Thông số kỹ thuật Vios"
+                  class="w-full border border-gray-200 rounded-lg"
+                />
+              </div>
+            </div>
+
+            <div class="pt-4 mt-8 border-t border-gray-200">
+              <div class="flex items-center mb-6">
+                <span class="w-[3px] h-8 bg-red-600 block mr-3"></span>
+                <h2 class="text-3xl font-bold uppercase">
+                  THƯ VIỆN ẢNH TOYOTA VIOS.
+                </h2>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <img
+                  src="img/vios_main_trang1.jpg"
+                  alt="Thư viện ảnh 1"
+                  class="w-full rounded-lg h-64 object-cover"
+                />
+                <img
+                  src="img/vios_thumb_noithat1.jpg"
+                  alt="Thư viện ảnh 2"
+                  class="w-full rounded-lg h-64 object-cover"
+                />
+                <img
+                  src="img/vios_thumb_do2.jpg"
+                  alt="Thư viện ảnh 3"
+                  class="w-full rounded-lg h-64 object-cover"
+                />
+                <img
+                  src="img/vios_thumb_volang1.jpg"
+                  alt="Thư viện ảnh 4"
+                  class="w-full rounded-lg h-64 object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div id="panel-reviews" class="tab-panel hidden space-y-6">
+            <h3 class="text-2xl font-semibold">Đánh giá</h3>
+            <p class="text-gray-600">Chưa có đánh giá nào.</p>
+            <div
+              class="border border-red-300 bg-red-50 p-6 rounded-lg text-red-800"
+            >
+              <p>
+                Chỉ những khách hàng đã đăng nhập và đã mua sản phẩm này mới có
+                thể để lại đánh giá.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-600 text-white">
+        <div class="container mx-auto px-6 py-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold">Ưu đãi & Khuyến mãi</h3>
+              <p class="text-gray-200 text-sm">
+                Quà tặng dành cho khách hàng gửi yêu cầu báo giá Online.
+              </p>
+              <p class="text-gray-200 text-sm">
+                * Quý khách vui lòng liên hệ hotline tư vấn, nhận thông tin ưu
+                đãi và khuyến mãi.
+              </p>
+            </div>
+            <div class="lg:justify-self-end">
+              <div
+                class="bg-red-600 p-3 rounded-lg font-bold text-xl text-center animate-pulse"
+              >
+                Hotline: 09876543210
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-black text-gray-400">
+      <div class="container mx-auto px-6 py-10">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center lg:text-left"
+        >
+          <div class="space-y-4 flex flex-col items-center lg:items-start">
+            <h4 class="text-xl font-bold text-white">Toyota VLU</h4>
+            <p class="text-sm font-bold">
+              Cơ sở 1: 45 Nguyễn Khắc Nhu, Phường Cô Giang, Quận 1, TP.HCM.
+            </p>
+            <p class="text-sm font-bold">
+              Cơ sở 2: 233A Phan Văn Trị, Phường 11, Quận Bình Thạnh, TP.HCM.
+            </p>
+            <p class="text-sm font-bold">
+              Cơ sở 3: 69/68 Đặng Thùy Trâm, Phường 13, Quận Bình Thạnh, TP.HCM.
+            </p>
+          </div>
+
+          <div class="space-y-4 flex flex-col items-center lg:items-start">
+            <h4 class="text-xl font-bold text-white">Hỗ trợ khách hàng</h4>
+            <p class="text-sm font-bold">Hotline: 09876543210</p>
+            <p class="text-sm font-bold">Email: toyotavlu@gmail.com</p>
+          </div>
+
+          <div class="space-y-4 flex flex-col items-center lg:items-start">
+            <h4 class="text-xl font-bold text-white">Follow</h4>
+            <div class="flex space-x-3 justify-center lg:justify-start">
+              <a
+                href="#"
+                class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white"
+              >
+                <i class="fas fa-phone"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-10 pt-6 flex flex-col items-center lg:items-start space-y-3"
+        >
+          <div
+            class="flex flex-row flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-xs"
+          >
+            <a href="#" class="hover:text-white">TRANG CHỦ</a>
+            <a href="#" class="hover:text-white">CHÍNH SÁCH BẢO MẬT</a>
+            <a href="#" class="hover:text-white">LIÊN HỆ</a>
+          </div>
+          <div class="text-xs text-center lg:text-left">Copyright 2025 ©</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+        }
+
+        // --- Main Image Slider ---
+        const mainSlider = document.getElementById("main-image-slider");
+        const mainPrev = document.getElementById("main-prev");
+        const mainNext = document.getElementById("main-next");
+        const thumbnails = Array.from(
+          document.querySelectorAll(".thumbnail-img")
+        );
+
+        // --- Thumbnail Slider ---
+        const thumbSlider = document.getElementById("thumbnail-slider");
+        const thumbPrev = document.getElementById("thumb-prev");
+        const thumbNext = document.getElementById("thumb-next");
+
+        let currentIndex = 0;
+        let totalSlides = 0;
+        let isAnimating = false; // Cờ (flag) để ngăn click nhanh
+
+        // Tự động tạo ảnh lớn từ ảnh thumbnail
+        if (mainSlider && thumbnails.length > 0) {
+          thumbnails.forEach((thumb, index) => {
+            const largeImage = document.createElement("img");
+            // SỬ DỤNG SRC CỤC BỘ
+            largeImage.src = thumb.src; 
+            largeImage.alt = thumb.alt;
+            largeImage.className =
+              "w-full h-full object-cover flex-none snap-center";
+            largeImage.dataset.index = index;
+            mainSlider.appendChild(largeImage);
+          });
+          totalSlides = thumbnails.length;
+        } else {
+          return; // Không có slider thì dừng
+        }
+
+        // --- HÀM CẬP NHẬT ---
+
+        // 1. Chỉ cuộn Slider chính (Khi bấm nút)
+        function updateMainSlider(newIndex) {
+          const newScrollLeft = mainSlider.clientWidth * newIndex;
+          mainSlider.scrollTo({
+            left: newScrollLeft,
+            behavior: "smooth",
+          });
+        }
+
+        // 2. Chỉ cập nhật Thumbnail (Khi bấm nút)
+        function updateThumbnails(newIndex) {
+          if (newIndex < 0) newIndex = totalSlides - 1;
+          if (newIndex >= totalSlides) newIndex = 0;
+          currentIndex = newIndex;
+
+          if (thumbSlider) {
+            // Highlight thumbnail
+            thumbnails.forEach((thumb, idx) => {
+              thumb.classList.toggle("border-red-600", idx === currentIndex);
+              thumb.classList.toggle(
+                "border-transparent",
+                idx !== currentIndex
+              );
+            });
+
+            // Tự động cuộn thumbnail vào giữa
+            const activeThumb = thumbnails[currentIndex];
+            if (activeThumb) {
+              const sliderRect = thumbSlider.getBoundingClientRect();
+              const thumbRect = activeThumb.getBoundingClientRect();
+              const scrollOffset =
+                thumbRect.left -
+                sliderRect.left -
+                sliderRect.width / 2 +
+                thumbRect.width / 2;
+
+              thumbSlider.scrollBy({ left: scrollOffset, behavior: "smooth" });
+            }
+          }
+        }
+
+        // 3. Hàm tổng hợp (Khi bấm nút hoặc click thumb)
+        function updateSlider(newIndex) {
+          // Kiểm tra cờ (flag)
+          if (isAnimating) return;
+
+          if (newIndex < 0) newIndex = totalSlides - 1;
+          if (newIndex >= totalSlides) newIndex = 0;
+
+          // Bật cờ
+          isAnimating = true;
+
+          currentIndex = newIndex;
+          updateMainSlider(currentIndex);
+          updateThumbnails(currentIndex);
+
+          // Tắt cờ sau khi animation hoàn thành
+          setTimeout(() => {
+            isAnimating = false;
+          }, 600); // 600ms là thời gian đủ cho 'scroll-smooth'
+        }
+
+        // --- GÁN SỰ KIỆN ---
+
+        // Nút bấm Main Slider
+        mainPrev.addEventListener("click", () =>
+          updateSlider(currentIndex - 1)
+        );
+        mainNext.addEventListener("click", () =>
+          updateSlider(currentIndex + 1)
+        );
+
+        // Click vào Thumbnail
+        thumbnails.forEach((thumb) => {
+          thumb.addEventListener("click", () => {
+            updateSlider(parseInt(thumb.dataset.index));
+          });
+        });
+
+        // Nút bấm Thumbnail Slider
+        if (thumbPrev && thumbNext && thumbSlider) {
+          thumbPrev.addEventListener("click", () => {
+            thumbSlider.scrollBy({
+              left: -thumbSlider.clientWidth / 2,
+              behavior: "smooth",
+            });
+          });
+          thumbNext.addEventListener("click", () => {
+            thumbSlider.scrollBy({
+              left: thumbSlider.clientWidth / 2,
+              behavior: "smooth",
+            });
+          });
+        }
+
+        // --- Tab Switching (Mô tả / Đánh giá) ---
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabPanels = document.querySelectorAll(".tab-panel");
+
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Lấy target panel
+            const targetPanelId =
+              button.id === "tab-desc" ? "panel-desc" : "panel-reviews";
+            const targetPanel = document.getElementById(targetPanelId);
+
+            // Xử lý nút
+            tabButtons.forEach((btn) => {
+              btn.classList.remove("text-red-600", "border-red-600");
+              btn.classList.add("text-gray-600", "border-transparent");
+            });
+            button.classList.add("text-red-600", "border-red-600");
+            button.classList.remove("text-gray-600", "border-transparent");
+
+            // Xử lý panel
+            tabPanels.forEach((panel) => {
+              if (panel.id === targetPanelId) {
+                panel.classList.remove("hidden");
+              } else {
+                panel.classList.add("hidden");
+              }
+            });
+          });
+        });
+
+        // Cập nhật thumbnail lần đầu tiên
+        updateThumbnails(currentIndex); 
+      });
+    </script>
+  </body>
+</html>

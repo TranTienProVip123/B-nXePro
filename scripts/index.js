@@ -215,8 +215,31 @@ document.addEventListener("DOMContentLoaded", () => {
   if (overlay) overlay.addEventListener("click", closeMenu);
   const navMenu = document.getElementById("navMenu");
   if (navMenu) {
-    navMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setTimeout(closeMenu, 100)));
+    // Chỉ đóng menu khi click vào link thường, KHÔNG đóng khi click dropdown button
+    navMenu.querySelectorAll("a").forEach(a => {
+      // Bỏ qua nếu đây là nút dropdown
+      if (!a.classList.contains('dropbtn')) {
+        a.addEventListener("click", () => setTimeout(closeMenu, 100));
+      }
+    });
   }
+
+  // Toggle dropdown menu trên mobile
+  const dropdownItems = document.querySelectorAll('.nav-menu .dropdown');
+  dropdownItems.forEach(dropdown => {
+    const dropbtn = dropdown.querySelector('.dropbtn');
+    
+    if (dropbtn) {
+      dropbtn.addEventListener('click', function(e) {
+        // Chỉ áp dụng cho màn hình nhỏ
+        if (window.innerWidth <= 768) {
+          e.preventDefault(); // Ngăn link mặc định
+          e.stopPropagation(); // Ngăn event bubbling
+          dropdown.classList.toggle('active');
+        }
+      });
+    }
+  });
 
   // Form submission listener
   const quoteForm = document.getElementById("quoteForm");
@@ -258,4 +281,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchInput) {
     searchInput.addEventListener('input', handleSearch);
   }
+});
+
+
+// Toggle dropdown menu trên mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownItems = document.querySelectorAll('.nav-menu .dropdown');
+    
+    dropdownItems.forEach(dropdown => {
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        
+        if (dropbtn) {
+            dropbtn.addEventListener('click', function(e) {
+                // Chỉ áp dụng cho màn hình nhỏ
+                if (window.innerWidth <= 768) {
+                    e.preventDefault(); // Ngăn link mặc định
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+    });
 });

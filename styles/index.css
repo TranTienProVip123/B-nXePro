@@ -72,6 +72,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 6px; /* Khoảng cách giữa chữ SẢN PHẨM và mũi tên */
+  cursor: pointer;
 }
 
 .nav-menu .dropdown .dropbtn .fa-chevron-down {
@@ -91,7 +92,6 @@ nav {
   /* margin-top: 10px; */ /* Xóa dòng này */
   top: 100%; /* Đặt vị trí của dropdown ngay dưới phần tử cha */
   padding-top: 10px; /* Dùng padding để tạo khoảng trống bên trong dropdown */
-  border-top: 10px solid transparent; /* Tạo một đường viền trong suốt để không thể click vào */
   left: 0;
 }
 
@@ -771,12 +771,35 @@ footer {
     left: 20px;
     padding: 10px 18px;
   }
-}
-
-/* Trên desktop vẫn hiển thị bình thường */
-@media (min-width: 769px) {
   .mobile-menu-btn {
     display: none;
+  }
+
+  .nav-menu .dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static; /* Không dùng absolute trên mobile */
+    box-shadow: none;
+    background-color: #f9f9f9;
+    margin-top: 8px;
+    padding-left: 15px; /* Thụt vào một chút */
+  }
+
+  .dropdown-content a {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  /* Khi dropdown active (click vào) */
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .dropdown.active .dropbtn .fa-chevron-down {
+    transform: rotate(180deg);
   }
 }
 
